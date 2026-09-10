@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recuperar senha • Salva Renda Afiliados</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/recovery.css" />
+</head>
+<body class="login-page">
+  <div class="container">
+    <!-- Voltar -->
+    <button id="btn-back" class="back-button">
+      <img src="./assets/back.svg" alt="Voltar">
+    </button>
+
+    <!-- Logo -->
+    <img src="./assets/logotipo.png" alt="Salva Renda Afiliados" class="logo">
+  
+    <!-- Título -->
+    <h1 class="recovery-title">Recuperar senha</h1>
+
+    <!-- Formulário de recuperação -->
+    <form id="recovery-form" class="form-recovery" action="https://api.luizrossini.com.br/auth/recover" method="POST">
+      <div class="input-group">
+        <img src="./assets/email.svg" class="input-icon" alt="email" >
+        <input type="email" name="email" placeholder="Email" required id="email">
+      </div>
+      <!-- Botão primário -->
+      <button type="submit" class="btn primary btn-recover">
+        Recuperar senha
+      </button>
+    </form>
+  </div>
+  <script src="./js/navigation.js"></script>
+</body>
+</html>

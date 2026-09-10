@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de ROI</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      padding: 20px;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+.calculadora{
+    display: block;
+    width:50%;
+    height: 50%;
+    border-radius: 100%;
+    margin: 20px auto;
+}
+
+h1{
+    color:#10b981;
+}
+
+p{
+    color:#2d7a61;
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-align: center;
+}
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+button:hover:not(.no-hover) {
+    background-color: #059669;
+}
+.no-hover{
+background: none;
+width: 10%;
+height: 10%;
+
+}
+
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .positivo {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .neutro {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    .negativo {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .tabela-container {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: #f1f5f9;
+    }
+
+    #export-btn {
+      margin-top: 10px;
+      background-color: #3b82f6;
+    }
+
+    #export-btn:hover {
+      background-color: #2563eb;
+    }
+
+    #clear-btn {
+      background-color: #ef4444;
+    }
+
+    #clear-btn:hover {
+      background-color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+      <div class="container">
+ <div class="top-bar">
+  <a href="./main.html" class="back-button">
+    <img src="./assets/back.svg" alt="Voltar" class="logout-img">
+  </a>
+  <span class="nav-title">Salva Renda Afiliados</span>
+  <img src="./assets/logotipo.png" class="nav-logo" alt="Logo Salva Renda">
+</div>
+
+        <img src="assets/calculadora.png" alt="logo" class="calculadora">
+        <h1>Salva Renda <br> Calculadora de ROI</h1>
+        <p>**Não esqueça de fazer o download**</p>
+    <label for="investido">Valor Investido (R$)</label>
+    <input type="number" id="investido" placeholder="Ex: 50" />
+
+    <label for="ganho">Valor Ganho (R$)</label>
+    <input type="number" id="ganho" placeholder="Ex: 150" />
+
+    <label for="link">Nome do Link (opcional)</label>
+    <input type="text" id="link" placeholder="Ex: Anúncio Reels" />
+
+    <label for="data">Data da Campanha</label>
+    <input type="date" id="data" />
+
+    <button onclick="calcularROI()" class="calcular">Calcular ROI</button>
+    <button id="clear-btn" onclick="limparFormulario()">Limpar Consulta</button>
+
+    <div id="resultado" class="resultado" style="display: none;"></div>
+
+    <div class="tabela-container">
+      <table id="historico" style="display: none;">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Link</th>
+            <th>Investido</th>
+            <th>Ganho</th>
+            <th>ROI</th>
+            <th>Lucro</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <button id="export-btn" onclick="exportCSV()" style="display: none;">Exportar CSV</button>
+  </div>
+
+  <script>
+    let userId = '123';
+
+    async function calcularROI() {
+      const investido = parseFloat(document.getElementById('investido').value);
+      const ganho = parseFloat(document.getElementById('ganho').value);
+      const nomeLink = document.getElementById('link').value;
+      const dataCampanha = document.getElementById('data').value;
+      const resultadoDiv = document.getElementById('resultado');
+
+      if (isNaN(investido) || isNaN(ganho) || investido <= 0 || !dataCampanha) {
+        resultadoDiv.style.display = 'block';
+        resultadoDiv.className = 'resultado neutro';
+        resultadoDiv.innerHTML = 'Preencha os valores corretamente!';
+        return;
+      }
+
+      const lucro = ganho - investido;
+      const roi = ((lucro / investido) * 100).toFixed(2);
+      const dataHoraAtual = new Date();
+      const hora = dataHoraAtual.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      let classe = 'neutro';
+      if (roi > 0) classe = 'positivo';
+      else if (roi < 0) classe = 'negativo';
+
+      resultadoDiv.style.display = 'block';
+      resultadoDiv.className = `resultado ${classe}`;
+      resultadoDiv.innerHTML = `ROI: <strong>${roi}%</strong><br>Lucro: <strong>R$ ${lucro.toFixed(2)}</strong>`;
+
+      const dados = { userId, investido, ganho, nomeLink, dataCampanha, roi, lucro, hora };
+
+      await salvarNoBanco(dados);
+      adicionarNaTabela(dados);
+    }
+
+    function adicionarNaTabela(dado) {
+      const tabela = document.getElementById('historico');
+      const tbody = tabela.querySelector('tbody');
+      tabela.style.display = 'table';
+      document.getElementById('export-btn').style.display = 'block';
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${dado.dataCampanha}</td>
+        <td>${dado.hora}</td>
+        <td>${dado.nomeLink || '-'}</td>
+        <td>R$ ${dado.investido.toFixed(2)}</td>
+        <td>R$ ${dado.ganho.toFixed(2)}</td>
+        <td>${dado.roi}%</td>
+        <td>R$ ${dado.lucro.toFixed(2)}</td>
+      `;
+      tbody.appendChild(row);
+    }
+
+    async function salvarNoBanco(dado) {
+      try {
+        await fetch('/api/roi', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dado)
+        });
+      } catch (err) {
+        console.error('Erro ao salvar no banco:', err);
+      }
+    }
+
+    function exportCSV() {
+      const rows = Array.from(document.querySelectorAll('table tr'));
+      const csv = rows.map(row => Array.from(row.children).map(cell => cell.innerText).join(',')).join('\n');
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'historico_roi.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function limparFormulario() {
+      document.getElementById('investido').value = '';
+      document.getElementById('ganho').value = '';
+      document.getElementById('link').value = '';
+      document.getElementById('data').value = '';
+      document.getElementById('resultado').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

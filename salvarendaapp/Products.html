@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos • Salva Renda Afiliados</title>
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+    /* Layout */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; background: #E0E0E0; border-bottom: 1px solid #E0E0E0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px;
+      z-index: 10;
+    }
+    .top-bar .back-button img { width: 24px; height: 24px; cursor: pointer;background:#E0E0E0 ; }
+    .top-bar .title { font-size: 16px; font-weight: 600; color: #2E8C6C; }
+    .top-bar .logo { width: 32px; height: auto; }
+
+    .content {
+      position: absolute; top: 56px; bottom: 0; left: 0; right: 0;
+      overflow-y: auto; padding: 10px 16px; background: #F9F9F9;
+    }
+
+    /* Search e Filter */
+    .search-row {
+      display: flex; align-items: center; margin-bottom: 12px;
+    }
+    .search-bar {
+      flex: 1; position: relative;
+    }
+    .search-bar input {
+      width: 100%; padding: 10px 40px 10px 14px;
+      border: 1px solid #E0E0E0; border-radius: 8px;
+      font-size: 14px;
+    }
+    .search-bar .icon-camera {
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px; opacity: 0.6; cursor: pointer;
+    }
+    .filter-btn {
+      margin-left: 8px; background: none; border: none; cursor: pointer;
+    }
+    .filter-btn img { width: 24px; height: 24px; }
+
+    /* Tabs Preço */
+    .tabs {
+      display: flex; margin-bottom: 12px;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .tab {
+      flex: 1; text-align: center; padding: 8px 0;
+      font-size: 12px; color: #7A7A7A; cursor: pointer;
+    }
+    .tab.active {
+      color: #2E8C6C; border-bottom: 2px solid #2E8C6C;
+      font-weight: 600;
+    }
+
+    /* Grid de produtos */
+    .grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 12px; padding-bottom: 16px;
+    }
+    .card {
+      background: #FFFFFF; border-radius: 12px;
+      padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex; flex-direction: column;
+    }
+    .card img.product-img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 8px; }
+    .badge {
+      background: #5DEBD0; color: #1B1B1B;
+      font-size: 10px; font-weight: 600;
+      padding: 2px 4px; border-radius: 4px;
+      align-self: flex-start; margin-bottom: 4px;
+    }
+    .card-title { font-size: 12px; color: #333333; margin-bottom: 4px; line-height: 1.2; flex: 1; }
+    .price-row { display: flex; align-items: center; margin-bottom: 4px; }
+    .price-current { font-size: 14px; font-weight: 600; color: #2E8C6C; margin-right: 6px; }
+    .price-old { font-size: 10px; color: #7A7A7A; text-decoration: line-through; }
+    .rating { display: flex; align-items: center; font-size: 10px; color: #7A7A7A; margin-bottom: 6px;}
+    .rating img { width: 12px; height: 12px; margin-right: 2px; }
+    .linkproduct{ background:#5cbd9c; border: none; border-radius: 5px;color: #FFFFFF;padding:4px; font-size: small; width: auto; margin:auto;display: flex;width: 50px;justify-content: center;}
+    
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <button id="btn-back" class="back-button">
+        <img src="assets/back.svg" alt="Voltar">
+      </button>
+  
+    <span class="title">Salva Renda Afiliados</span>
+    <img src="assets/logotipo.png" class="logo" alt="Logo">
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <!-- Search + Filter -->
+    <div class="search-row">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar produto">
+        <img src="assets/search.svg" class="icon-camera" alt="Foto">
+      </div>
+      <button class="filter-btn"><img src="assets/filter.svg" alt="Filtro"></button>
+    </div>
+
+    <!-- Tabs Preço -->
+    <div class="tabs">
+      <div class="tab active">Preço</div>
+      <div class="tab">Comissão</div>
+      <div class="tab">Vendas</div>
+      <div class="tab">Mais avaliado</div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid">
+      <!-- Exemplo de Card -->
+      <div class="card">
+        <img src="assets/product1.png" class="product-img" alt="Foto Produto API">
+        
+        <div class="card-title">Nome do Produto API</div>
+        <div class="price-row">
+          <span class="price-current">R$Preço produto API</span>
+        </div>
+        <div class="rating">
+          <img src="assets/star.svg" alt="Estrela"><span>Avaliação API</span><span>&nbsp;QUANTIDADE VENDIDA (API) Vendido(s)</span>
+        </div>
+        <div><button class="linkproduct">Link</button></div>
+        
+      </div>
+      <div class="card">
+        <img src="assets/product1.png" class="product-img" alt="Foto Produto API">
+        
+        <div class="card-title">Nome do Produto API</div>
+        <div class="price-row">
+          <span class="price-current">R$Preço produto API</span>
+        </div>
+        <div class="rating">
+          <img src="assets/star.svg" alt="Estrela"><span>Avaliação API</span><span>&nbsp;QUANTIDADE VENDIDA (API) Vendido(s)</span>
+        </div>
+        <div><button class="linkproduct">Link</button></div>
+        
+      </div>
+    
+  </div>
+</body>
+</html>

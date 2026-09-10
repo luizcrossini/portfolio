@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salva Renda Afiliados</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="main-page">
+
+  <!-- Top Bar -->
+ <div class="top-bar">
+     <button id="btn-logout"   href="./main.html" class="back-button">
+      <img src="./assets/back.svg" alt="Voltar" class="logout-img">
+    </button>
+    <span class="nav-title">Salva Renda Afiliados</span>
+    <img src="./assets/logotipo.png" class="nav-logo" alt="Logo Salva Renda">
+  </div>
+<div id="user-info"></div>
+  <!-- Conteúdo Principal -->
+  <div class="container-card">
+
+    <!-- Card 1: Robô Salva Renda -->
+    <a href="#"  onclick=planoMensal() id="card-robo" class="card">
+      <h2 class="card-title">Plano Mensal <br><br>R$ 57,00</h2>
+      <p class="card-text">
+       Cobrança do serviço realizada mensalmente no seu cartão.
+      </p>
+    </a>
+
+    <!-- Card 2: Salva Renda Afiliados -->
+    <a href="#" id="card-robo" class="card">
+      <h2 class="card-title">Plano Anual<br><br>R$ 587,00</h2>
+      <p class="card-text">
+        Cobrança do serviço realizada anualmente no seu cartão.
+      </p>
+    </a>
+  </div>
+</body>
+
+<script>
+   function planoMensal() {
+    const userId = localStorage.getItem('user_id');
+    const url = `https://app.monetizze.com.br/checkout/KPC435767?src=${userId}`; // substitua pelo seu link real
+    window.open(url, "_blank", "width=720,height=600");
+  }
+
+  function planoAnual() {
+    const userId = localStorage.getItem('user_id');
+    const url = `https://app.monetizze.com.br/checkout/DJR352876?src=${userId}`; // substitua pelo seu link real
+    window.open(url, "_blank", "width=720,height=600");
+  }
+  
+  </script>
+ <script>   document.addEventListener('DOMContentLoaded', () => {
+  const btnLogout = document.getElementById('btn-logout');
+  if (btnLogout) {
+    btnLogout.addEventListener('click', () => {
+      // Remove o token e redireciona ao login
+      window.location.href = './main.html';
+    });
+  }
+});</script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

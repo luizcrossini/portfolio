@@ -1,0 +1,625 @@
+/* reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+  
+  /* corpo centralizado no viewport */
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  /* container com largura fixa para mobile */
+  .container {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  /* ilustração */
+  .illustration {
+    width: 80%;
+    max-width: 250px;
+    margin: 0 auto 30px;
+    display: block;
+  }
+  
+  /* título principal */
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2E8C6C;    /* tom de verde do mockup */
+    margin-bottom: 10px;
+  }
+  
+  /* texto secundário */
+  .subtitle {
+    font-size: 14px;
+    color: #7A7A7A;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+  
+  /* estilo comum dos botões */
+  .btn {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-bottom: 15px;
+  }
+  
+  /* botão primário */
+  .primary {
+    background-color: #5DEBD0;
+    border: none;
+    color: white;
+  }
+  
+  /* botão secundário */
+  .secondary {
+    background-color: transparent;
+    border: 1px solid #5DEBD0;
+    color: #5DEBD0;
+  }
+  
+  /* efeito de toque em ambos */
+  .btn:active {
+    opacity: 0.7;
+  }
+
+  body.login-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 30px;
+    height: 100vh;
+  }
+  
+  /* Título e subtítulo */
+  .login-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2E8C6C;
+    margin-bottom: 5px;
+  }
+  .login-subtitle {
+    font-size: 14px;
+    color: #7A7A7A;
+    margin-bottom: 25px;
+  }
+  
+
+
+  .back-button {
+    position: absolute;
+    top: 20px;    /* distância do topo */
+    left: 20px;   /* distância da esquerda */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .back-button img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Formulário */
+  .form-login {
+    width: 100%;
+  }
+  .input-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .input-group .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    opacity: 0.6;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .input-group input:focus {
+    border-color: #5DEBD0;
+    outline: none;
+  }
+  .input-group .toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  
+  /* Link de recuperação */
+  .recover-link {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #2E8C6C;
+    text-decoration: none;
+    margin-bottom: 25px;
+  }
+  
+  /* Botão de login */
+  .btn-login {
+    margin-bottom: 30px;
+  }
+  
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #E0E0E0;
+  }
+  .divider::before {
+    margin-right: 10px;
+  }
+  .divider::after {
+    margin-left: 10px;
+  }
+  .divider span {
+    font-size: 12px;
+    color: #7A7A7A;
+  }
+  
+  /* Botão social */
+  .btn.social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF;
+    color: #2E2E2E;
+    padding: 12px 0;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+.container .botao .btn-recover{
+    display: block;
+    background-color: #40e0ab;
+    border: none;
+    border-radius: 10%;
+    padding:10px;
+     margin: 20px auto; /* <- centraliza horizontalmente */
+}
+.container .botao .btn-recover:hover{
+  background-color: #2fa17b;
+  color: #FFFFFF;
+}
+
+  .btn.social img {
+    width: 20px;
+    margin-right: 8px;
+  }
+  
+  /* Texto de rodapé */
+  .bottom-text {
+    font-size: 12px;
+    color: #7A7A7A;
+  }
+  .bottom-text a {
+    color: #2E8C6C;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Ajusta margem superior igual ao login */
+body.login-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 30px;
+    height: 100vh;
+  }
+  
+  /* Logo centralizado abaixo do back-button */
+  .logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+  }
+  
+  /* Título da tela */
+  .recovery-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2E8C6C;    /* mesmo tom de verde */
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Garante que o form ocupe toda a largura do container */
+  .form-recovery {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Espaçamento maior antes do botão primário */
+  .btn-recover {
+    margin-top: 10px;
+  }
+
+  /* Título principal */
+.signup-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2E8C6C;
+    margin-bottom: 5px;
+  }
+  
+  /* Subtítulo */
+  .signup-subtitle {
+    font-size: 14px;
+    color: #7A7A7A;
+    margin-bottom: 25px;
+  }
+  
+  /* Formulário ocupa 100% da largura do container */
+  .form-signup {
+    width: 100%;
+  }
+  
+  /* Espaçamento extra antes do botão */
+  .btn-signup {
+    margin-top: 20px;
+  }
+
+  /* Body alinhado ao topo */
+body.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    height: 100vh;
+    background-color: #FFFFFF;
+  }
+  
+  /* Top bar com back-button, título e logo */
+  .top-bar {
+    position: fixed;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  .back-button {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  img.template {
+  max-width: 100%;        /* Responsivo */
+  height: auto;           /* Mantém proporção */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+}
+
+  .nav-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2E8C6C;
+  }
+  .nav-logo {
+    position: absolute;
+    right: 20px;
+    width: 32px;
+    height: auto;
+  }
+  
+  /* Container central */
+  .container-card {
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;       /* quebra linha quando precisar */
+  gap: 24px;             /* espaço entre os cards */
+  justify-content: center; /* CENTRALIZA na horizontal */
+  align-items: flex-start; /* topo alinhado entre linhas */
+  padding: 16px;
+  }
+  
+  
+  /* Estilo do card/link */
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: #FFF;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.1s;
+  }
+  .card:active {
+    transform: scale(0.98);
+
+  }
+  
+  /* Imagem dentro do card */
+  .card-img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 100%;
+  }
+  
+  /* Título e texto do card */
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2E8C6C;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 12px;
+    color: #7A7A7A;
+    line-height: 1.4;
+  }
+
+
+  /* garante altura cheia */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  /* layout geral da página de chat */
+  body.chat-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  /* topo com botão de voltar, título e logo */
+  .top-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+  .back-button {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .back-button img {
+    width: 24px;
+    height: 24px;
+  }
+  .nav-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2E8C6C;
+  }
+  .nav-logo {
+    position: absolute;
+    right: 20px;
+    width: 32px;
+    height: auto;
+  }
+  
+  /* área de mensagens (scrollável) */
+  .chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 20px;
+  }
+  
+  /* cada mensagem */
+  .message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 15px;
+  }
+  
+  /* avatar comum */
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  /* mensagem do usuário (à esquerda) */
+  .message.user {
+    justify-content: flex-start;
+  }
+  .message.user .avatar {
+    margin-right: 8px;
+  }
+  .message.user .bubble {
+    background: #F5F5F5;
+    color: #333333;
+    padding: 10px 14px;
+    border-radius: 16px 16px 16px 0;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* mensagem da IA (à direita) */
+  .message.ai {
+    justify-content: flex-end;
+  }
+  .message.ai .bubble {
+    background: #5DEBD0;
+    color: #1B1B1B;
+    padding: 10px 14px;
+    border-radius: 16px 16px 0 16px;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .message.ai .avatar.ai-avatar {
+    margin-left: 8px;
+  }
+  
+  /* bolha “digitando” */
+  .typing .typing-bubble {
+    font-style: italic;
+  }
+  
+  /* formulário de input fixo embaixo */
+  .chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid #E0E0E0;
+  }
+  .chat-input input {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 14px;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    outline: none;
+  }
+  .chat-input button {
+    background: none;
+    border: none;
+    margin-left: 8px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .chat-input button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  h1 {
+  font-size: 22px;
+  color: #0a8267;
+}
+
+p {
+  color: #555;
+  font-size: 14px;
+}
+
+.filtro-container {
+  text-align: center;
+  margin: 20px;
+  font-size: 12px;
+}
+
+.filtro-container select {
+  padding: 8px 12px;
+  font-size: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #f60;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+button.download {
+  background-color: #0a8267;
+}
+
+.logout-icon {
+    position: absolute;
+    left: 10px; /* distância da borda esquerda */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 10%;
+    height: 10%;
+    background: none;
+}
+
+.logout-img {
+    position: absolute;
+    left: 10px; /* distância da borda esquerda */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+}

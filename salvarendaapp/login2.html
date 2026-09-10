@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login • Salva Renda</title>
+  <!-- 1) Biblioteca do Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- 2) Seus módulos JS -->
+  <script type="module" src="/js/config.js"></script>
+  <script type="module" src="/js/login.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <body class="login-page">
+        <div class="container">
+          <!-- Título -->
+          <h1 class="login-title">Bem Vindo!</h1>
+          <p class="login-subtitle">Faça seu login!</p>
+    
+          <!-- Formulário -->
+          <form class="form-login" action="#" method="POST" id="login-form">
+            <div class="input-group">
+              <img
+                src="/assets/email.svg"
+                class="input-icon"
+                alt="Email"
+              />
+              <input type="email" name="email" placeholder="Email" required autocomplete="username"/>
+            </div>
+    
+            <div class="input-group">
+              <img
+                src="/assets/lock.svg"
+                class="input-icon"
+                alt="Senha"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+              />
+              <img
+                src="/assets/eye-off.svg"
+                class="toggle-icon"
+                alt="Mostrar senha"
+              />
+            </div>
+    
+            <a href="recovery.html" id="link-recover" class="recover-link">Recuperar Senha</a>
+            <button id="btn-login-go" class="btn primary btn-login">Entrar</button>
+          </form>
+    
+          <!-- Divider -->
+          <div class="divider"><span>Continuar com</span></div>
+    
+          <!-- Social Login -->
+          <div id="g_id_onload" style="border-radius: 10%;"
+         data-client_id="634543433969-m3olnno1u8sjg9nefhtmuh8crc3rd4k3.apps.googleusercontent.com"  
+         data-callback="handleGoogleCredential">
+    </div>
+    <div class="g_id_signin"></div>
+          <!-- Footer -->
+          <p class="bottom-text">
+            Não tem uma conta? <a href="signup.html" id="link-signup">Crie aqui!</a>
+          </p>
+        </div>
+        <script type="module" src="/js/login.js"></script>
+        <script type="module" src="/js/config.js"></script>
+</body>
+</html>

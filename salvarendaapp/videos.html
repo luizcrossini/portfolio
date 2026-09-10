@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salva Renda - Vídeos Shopee</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="main-page">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <a href="./main.html" class="back-button">
+      <img src="./assets/back.svg" alt="Voltar" class="logout-img">
+    </a>
+    <span class="nav-title">Salva Renda Afiliados</span>
+    <img src="./assets/logotipo.png" class="nav-logo" alt="Logo Salva Renda">
+  </div>
+
+  <div class="container-card">
+    <h3 class="nav-title" style="margin-bottom: 20px; text-align: center;">
+      Vídeos Prontos da Shopee
+    </h3>
+    <p class="card-text" style="text-align: center; color: #000;">
+      Para baixar o vídeo desejado, basta clicar no botão <strong>Baixar vídeo</strong>!
+    </p>
+
+    <main>
+      <div class="filtro-container">
+        <label for="categorySelect">Filtrar por categoria:</label>
+        <select id="categorySelect">
+          <option value="todas">Todas</option>
+        </select>
+      </div>
+
+      <!-- Estado de carregamento / mensagens -->
+      <div id="videoContainer" class="grid">
+        <p style="padding:12px;color:#555">Carregando vídeos…</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Carregue o script uma única vez -->
+<script src="js/app.js?v=2025-08-27-02"></script>
+</body>
+</html>

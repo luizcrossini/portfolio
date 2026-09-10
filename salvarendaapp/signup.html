@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar Conta • Salva Renda Afiliados</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="login-page">
+  <div class="container">
+    <!-- Botão Voltar -->
+    <a href="index.html"><button id="btn-back" class="back-button">
+      <img src="./assets/back.svg" alt="Voltar">
+    </button></a>
+
+    <!-- Título -->
+    <h1 class="signup-title">Bem Vindo!</h1>
+    <p class="signup-subtitle">Crie seu acesso!</p>
+
+    <!-- Formulário de Cadastro -->
+    <form id="signup-form" class="form-signup">
+      <div class="input-group">
+        <img src="./assets/user.svg" class="input-icon" alt="Nome completo">
+        <input type="text" name="fullname" placeholder="Nome Completo" required id="fullname">
+      </div>
+
+      <div class="input-group">
+        <img src="./assets/email.svg" class="input-icon" alt="Email">
+        <input type="email" name="email" placeholder="Email" id="email" required>
+      </div>
+
+      <div class="input-group">
+        <img src="./assets/lock.svg" class="input-icon" alt="Senha">
+        <input type="password" name="password" placeholder="Senha" required>
+        <img src="./assets/eye-off.svg" class="toggle-icon" alt="Mostrar senha" style="cursor:pointer;">
+      </div>
+
+      <div class="input-group">
+        <img src="./assets/lock.svg" class="input-icon" alt="Confirmar senha">
+        <input type="password" name="confirmPassword" placeholder="Confirmar Senha" required>
+        <img src="./assets/eye-off.svg" class="toggle-icon" alt="Mostrar senha" style="cursor:pointer;">
+      </div>
+
+      <button type="submit" class="btn primary btn-signup">Criar conta</button>
+    </form>
+  </div>
+  <script src="./js/navigation.js"></script>
+  <!-- <script src="/js/signup.js"></script> -->
+  <script type="module" src="./js/config.js"></script>
+  <script type="module">
+    import { API_BASE } from './js/config.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle visibilidade das senhas
+      document.querySelectorAll('.toggle-icon').forEach(icon => {
+        icon.addEventListener('click', () => {
+          const input = icon.closest('.input-group').querySelector('input');
+          const show = input.type === 'password';
+          input.type = show ? 'text' : 'password';
+          icon.src = show ? 'assets/eye.svg' : 'assets/eye-off.svg';
+          icon.alt = show ? 'Ocultar senha' : 'Mostrar senha';
+        });
+      });
+
+      // Submissão do formulário via Fetch
+      const form = document.getElementById('signup-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // impede o POST em /signup.html
+        const fullname = form.fullname.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        if (password !== confirmPassword) {
+          alert('As senhas não coincidem.');
+          return;
+        }
+        try {
+          const response = await fetch(`${API_BASE}/auth/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials:'include',
+            body: JSON.stringify({ fullname, email, password })
+          });
+          const data = await response.json();
+          if (!response.ok) {
+            alert(data.error || 'Erro no cadastro.');
+          } else {
+             alert('Cadastro realizado com sucesso! Verifique seu e-mail.');
+            window.location.href = 'login.html';
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Erro ao conectar com a API.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
